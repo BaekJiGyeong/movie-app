@@ -1,23 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Food({name, picture}) { // props.fav
-  return (<div>
-<h3>I like {name } </h3>
-<img src={picture}/>
+function Food({name, picture, rating}) { // props.fav
+  return (
+  <div>
+    <h3>I like {name } </h3>
+    <h4>{rating}/5.0</h4>
+    <img src={picture}/>
   </div>
     
      
   );
 }
-const foodILike = [{name:"kimchi", image:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.maangchi.com%2Frecipe%2Ftongbaechu-kimchi&psig=AOvVaw2fyp3190a-i6DNWaB8mIeD&ust=1629983415924000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCKjjlcafzPICFQAAAAAdAAAAABAD"}
-, {name:"chcha", image:"https://img.sbs.co.kr/newimg/news/20200923/201474086_1280.jpg"}];
+
+
+Food.propTypes = {
+  name: PropTypes.string.isRequired,
+  picture : PropTypes.string.isRequired,
+  rating : PropTypes.number.isRequired
+}
+
+const foodILike = [{id:1, name:"kimchi", image:"https://www.google.com/search?q=react&rlz=1C5CHFA_enKR952KR952&sxsrf=ALeKk00IXXfBio5aeHiuSsKQpW-Qwqhvmw:1629936494383&tbm=isch&source=iu&ictx=1&fir=CSdKvaXFVNCzjM%252CWD7UrTSsaFzRYM%252C%252Fm%252F012l1vxv&vet=1&usg=AI4_-kQVjYqz0LMQrRsb1BuvhiHsVFvtxQ&sa=X&ved=2ahUKEwipx4POss3yAhXtQPUHHXs-BH0Q_B16BAgvEAE#imgrc=CSdKvaXFVNCzjM"
+,rating:5}
+, {id:2, name:"chcha", image:"https://www.google.com/search?q=react&rlz=1C5CHFA_enKR952KR952&sxsrf=ALeKk00IXXfBio5aeHiuSsKQpW-Qwqhvmw:1629936494383&tbm=isch&source=iu&ictx=1&fir=CSdKvaXFVNCzjM%252CWD7UrTSsaFzRYM%252C%252Fm%252F012l1vxv&vet=1&usg=AI4_-kQVjYqz0LMQrRsb1BuvhiHsVFvtxQ&sa=X&ved=2ahUKEwipx4POss3yAhXtQPUHHXs-BH0Q_B16BAgvEAE#imgrc=CSdKvaXFVNCzjM"
+, rating:4.8}];
+
+function renderFood(dish){
+  console.log(dish);
+  return <Food name={dish.name} picture={dish.image} />;
+}
 
 function App() {
   return (
   <div> 
     <h1>Hello!!</h1>
-      {foodILike.map(dish=> (<Food name={dish.name} picture={dish.image}/>))}
-    
+      <div>
+        {console.log(foodILike.map(renderFood))}
+        {foodILike.map(dish=> (<Food key={dish.id} name={dish.name} picture={dish.image} rating = {dish.rating}/>))}
+      </div>
     </div>
     );
 }

@@ -22,16 +22,16 @@ class Detail extends React.Component{
         if(location.state){
             
             return (
-                <div className="movie">
+                <div className="movie_detail">
                 <img src={location.state.poster} alt={location.state.title} title={location.state.title}></img>
                 <div className="movie__data">
                     <h3 className="movie__title">{location.state.title}</h3>
                     <h5 className="movie__year">{location.state.year}</h5>
-                    <p className="movie__summary">{location.state.summary.slice(0,180)}...</p>
+                    <p className="movie__summary">{location.state.summary}</p>
                     <ul className="movies__genres">
     
                         {location.state.genres.map((genre, index) => 
-                        <li key = {index} className="genres__genre">{index}, {genre}</li>
+                        <li key = {index} className="genres__genre">{genre}</li>
                         )}   
                     </ul>
                 </div>

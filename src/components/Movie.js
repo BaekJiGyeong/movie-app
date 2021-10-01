@@ -5,7 +5,8 @@ import './Movie.css'
 
 function Movie({id, year, title, summary, poster, genres}){
     return (
-        <Link to={{
+        <div className="movie">
+            <Link to={{
             pathname:"/movie-detail",
             state:{
                 year,
@@ -15,7 +16,6 @@ function Movie({id, year, title, summary, poster, genres}){
                 genres
             }
         }}>
-        <div className="movie">
             <img src={poster} alt={title} title={title}></img>
             <div className="movie__data">
                 <h3 className="movie__title">{title}</h3>
@@ -28,8 +28,8 @@ function Movie({id, year, title, summary, poster, genres}){
                     )}   
                 </ul>
             </div>
+            </Link>
         </div>
-        </Link>
     )
 }
 

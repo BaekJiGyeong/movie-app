@@ -1,5 +1,6 @@
 import React from 'react'
 import reactDom from 'react-dom';
+import './Detail.css'
 
 /*
 function Detail({location}){ // props 쓸때는 그냥 쓰고 props 안에 파라미터 추출시 { } 해줌
